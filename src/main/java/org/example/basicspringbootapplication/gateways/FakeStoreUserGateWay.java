@@ -6,11 +6,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import org.example.basicspringbootapplication.DTO.UserDTO;
+import org.example.basicspringbootapplication.DTO.UserResponseDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.lang.reflect.Type;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class FakeStoreUserGateWay implements IUserGateWay {
@@ -23,25 +26,18 @@ public class FakeStoreUserGateWay implements IUserGateWay {
 
     @Override
     public List<UserDTO> getAllusers() {
-        // Step 1: Get raw JSON response
-        String rawJson = webClient.get()
+        UserResponseDTO response = webClient.get()
                 .uri("/users")
                 .retrieve()
-                .bodyToMono(String.class)
+                .bodyToMono(UserResponseDTO.class)
                 .block();
 
-        System.out.println("Raw response: " + rawJson);
-
-        Gson gson = new Gson();
-        JsonObject root = JsonParser.parseString(rawJson).getAsJsonObject();
-
-// Extract the "users" array
-        JsonArray usersArray = root.getAsJsonArray("users");
-
-// Deserialize the array
-        Type listType = new TypeToken<List<UserDTO>>() {}.getType();
-        List<UserDTO> users = gson.fromJson(usersArray, listType);
-
-        return users;
+        // Optional: Use ModelMapper for further transformations
+        ModelMapper modelMapper = new ModelMapper();
+        return response.users.stream()
+                .map(user -> modelMapper.map(user, UserDTO.class))
+                .collect(Collectors.toList());
     }
+
+
 }
