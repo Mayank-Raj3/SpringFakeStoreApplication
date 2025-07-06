@@ -23,9 +23,12 @@ public class FakeStoreCategoryGateway implements ICategoryGateway {
 
     @Override
     public List<CategoryDTO> getAllCategories() throws IOException {
-        FakeStoreCategoryResponseDTO response = this.fakeStoreCategoryApis.getAllFakeStoreCategories()
+
+        FakeStoreCategoryResponseDTO response = this.fakeStoreCategoryApis
+                .getAllFakeStoreCategories()
                 .execute()
                 .body();
+
         if(response == null){
             throw new IOException("Failed To fetch Category api");
         }

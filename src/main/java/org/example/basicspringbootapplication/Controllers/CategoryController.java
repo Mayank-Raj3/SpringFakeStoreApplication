@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping("/api/categories")
 
 public class CategoryController {
-//    @Autowired Not recommended Feild Injection
+//    @Autowired Not recommended field Injection
     private ICategoryService categoryService ;
     public CategoryController(ICategoryService _categoryService){
         // this is dependency Injection used for Dependency Inversion (Does not depend upon concrete Class , loose coupling)

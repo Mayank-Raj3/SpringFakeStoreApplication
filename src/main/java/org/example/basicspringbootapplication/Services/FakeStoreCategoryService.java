@@ -11,7 +11,7 @@ import java.util.List;
 public class FakeStoreCategoryService implements ICategoryService {
     private final ICategoryGateway categoryGateway ;
     public FakeStoreCategoryService(ICategoryGateway _categoryGateway){
-        this.categoryGateway=_categoryGateway ;
+        this.categoryGateway= _categoryGateway;
     }
 
     @Override
