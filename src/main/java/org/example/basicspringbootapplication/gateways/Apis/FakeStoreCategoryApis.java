@@ -1,4 +1,4 @@
-package org.example.basicspringbootapplication.Apis;
+package org.example.basicspringbootapplication.gateways.Apis;
 
 import lombok.Getter;
 import org.example.basicspringbootapplication.DTO.FakeStoreCategoryResponseDTO;

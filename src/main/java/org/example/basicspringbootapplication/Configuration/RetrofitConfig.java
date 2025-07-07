@@ -1,12 +1,12 @@
 package org.example.basicspringbootapplication.Configuration;
 
-import org.example.basicspringbootapplication.Apis.FakeStoreCategoryApis;
+import org.example.basicspringbootapplication.gateways.Apis.FakeStoreCategoryApis;
+import org.example.basicspringbootapplication.gateways.Apis.FakeStoreProductApi;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-import io.github.cdimascio.dotenv.Dotenv;
 
 
 /*
@@ -32,5 +32,14 @@ public class RetrofitConfig {
         // retrofit will create class for interface FakeStoreCategoryApis
         return retrofit.create(FakeStoreCategoryApis.class);
     }
+
+    @Bean
+    FakeStoreProductApi fakeStoreProductApi(Retrofit retrofit){
+        // retrofit will create class for interface FakeStoreCategoryApis
+        return retrofit.create(FakeStoreProductApi.class);
+    }
+
+
+
 
 }

@@ -1,17 +1,13 @@
 package org.example.basicspringbootapplication.gateways;
 
-import org.example.basicspringbootapplication.Apis.FakeStoreCategoryApis;
+import org.example.basicspringbootapplication.gateways.Apis.FakeStoreCategoryApis;
 import org.example.basicspringbootapplication.DTO.CategoryDTO;
 import org.example.basicspringbootapplication.DTO.FakeStoreCategoryResponseDTO;
-import org.example.basicspringbootapplication.Services.FakeStoreCategoryService;
 import org.springframework.stereotype.Component;
 
-import javax.imageio.IIOException;
 import java.io.IOException;
 import java.util.List;
-import java.util.Locale;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Component
 public class FakeStoreCategoryGateway implements ICategoryGateway {
