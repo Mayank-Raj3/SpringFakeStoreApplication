@@ -17,6 +17,19 @@ public class ProductMapper {
                 .title(product.getTitle())
                 .discount(product.getDiscount())
                 .build();
-
     }
+    public static Product toEntity(ProductDTO dto) {
+        return Product.builder()
+                .category(dto.getCategory())
+                .brand(dto.getBrand())
+                .price(dto.getPrice())
+                .color(dto.getColor())
+                .description(dto.getDescription())
+                .image(dto.getImage())
+                .model(dto.getModel())
+                .title(dto.getTitle())
+                .discount(dto.getDiscount())
+                .build();
+    }
+
 }
