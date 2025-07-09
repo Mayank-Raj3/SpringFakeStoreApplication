@@ -1,5 +1,6 @@
 package org.example.basicspringbootapplication.gateways;
 
+import org.example.basicspringbootapplication.Mapper.GetAllCategoryMappers;
 import org.example.basicspringbootapplication.gateways.Apis.FakeStoreCategoryApis;
 import org.example.basicspringbootapplication.DTO.CategoryDTO;
 import org.example.basicspringbootapplication.DTO.FakeStoreCategoryResponseDTO;
@@ -28,11 +29,7 @@ public class FakeStoreCategoryGateway implements ICategoryGateway {
         if(response == null){
             throw new IOException("Failed To fetch Category api");
         }
-        return response.getCategories().stream()
-                .map(category -> CategoryDTO.builder()
-                        .name(category)
-                        .build())
-                .collect(Collectors.toList());
+        return GetAllCategoryMappers.toCategoryDTO(response);
 
     }
 }

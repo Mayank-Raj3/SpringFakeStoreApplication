@@ -30,6 +30,7 @@ public class FakeStoreUserGateWay implements IUserGateWay {
     public List<UserDTO> getAllusers() {
 
         UserResponseDTO response = fakeStoreUserApi.getAllUsers();
+
         if(response != null) {
             // Optional: Use ModelMapper for further transformations
             ModelMapper modelMapper = new ModelMapper();
