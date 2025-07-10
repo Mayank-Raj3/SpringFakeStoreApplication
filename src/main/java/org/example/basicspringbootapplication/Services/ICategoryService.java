@@ -11,5 +11,5 @@ public interface ICategoryService {
     public List<CategoryDTO> getAllCategory() throws IOException;
     public CategoryDTO createCategory(CategoryDTO categoryDTO) ;
     public CategoryDTO getCategoryById(long id);
-//    public CategoryDTO getByName(String name) throws Exception ;
+    public CategoryDTO getByName(String name) throws Exception ;
 }

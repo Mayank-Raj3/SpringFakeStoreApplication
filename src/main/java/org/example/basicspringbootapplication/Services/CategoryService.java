@@ -1,6 +1,7 @@
 package org.example.basicspringbootapplication.Services;
 
 import org.example.basicspringbootapplication.DTO.CategoryDTO;
+import org.example.basicspringbootapplication.DTO.ProductDTO;
 import org.example.basicspringbootapplication.Entity.Category;
 import org.example.basicspringbootapplication.Mapper.CategoryMapper;
 import org.example.basicspringbootapplication.Repository.CategoryRepository;
@@ -36,4 +37,27 @@ public class CategoryService implements ICategoryService {
         assert category != null;
         return CategoryMapper.toDTO(category);
     }
+
+    @Override
+    public CategoryDTO getByName(String name) throws Exception {
+        Category saved = this.categoryRepository.findByName(name).orElseThrow(() -> new Exception("Category not found"));
+        return CategoryMapper.toDTO(saved);
+    }
+
+//    public AllProductsOfCategoryDTO getAllProductsOfCategory(Long categoryId) throws Exception {
+//        Category category = repo.findById(categoryId)
+//                .orElseThrow(() -> new Exception("Category not found with id: " + categoryId));
+//
+//        List<ProductDTO> productDTOs = category.getProducts()
+//                .stream()
+//                .map(product -> ProductMapper.toDto(product))
+//                .collect(Collectors.toList());
+//
+//        return AllProductsOfCategoryDTO.builder()
+//                .categoryId(category.getId())
+//                .name(category.getName())
+//                .products(productDTOs)
+//                .build();
+//    }
+
 }

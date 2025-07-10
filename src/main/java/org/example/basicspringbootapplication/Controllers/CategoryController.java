@@ -26,11 +26,6 @@ public class CategoryController {
         this.categoryService= _categoryService;
     }
 
-    @GetMapping
-    public List<CategoryDTO> getAllCategories() throws IOException {
-        return categoryService.getAllCategory();
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable long id) throws IOException {
         return ResponseEntity.ok(categoryService.getCategoryById(id));
@@ -41,30 +36,32 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.createCategory(categoryDTO));
     }
 
-    @Override
-    public CategoryDTO getByName(String name) throws Exception {
-        Category category = categoryService.findByName(name)
-                .orElseThrow(() -> new Exception("Category not found with name: " + name));
-
-
-        return CategoryMapper.toDTO(category);
-
-    }
-
-    public AllProductsOfCategoryDTO getAllProductsOfCategory(Long categoryId) throws Exception {
-        Category category = repo.findById(categoryId)
-                .orElseThrow(() -> new Exception("Category not found with id: " + categoryId));
-
-        List<ProductDTO> productDTOs = category.getProducts()
-                .stream()
-                .map(product -> ProductMapper.toDto(product))
-                .collect(Collectors.toList());
-
-        return AllProductsOfCategoryDTO.builder()
-                .categoryId(category.getId())
-                .name(category.getName())
-                .products(productDTOs)
-                .build();
+    @GetMapping
+    public ResponseEntity<?> getCategoryByName(@RequestParam(required = false) String name) throws Exception {
+        if(name!=null && !name.isEmpty()){
+            CategoryDTO categoryDTO = categoryService.getByName(name);
+            return ResponseEntity.ok(categoryDTO);
+        }
+       return ResponseEntity.ok(categoryService.getAllCategory());
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
