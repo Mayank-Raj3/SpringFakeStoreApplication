@@ -13,7 +13,7 @@ public class ProductDTO {
 	private int discount;
 	private String model;
 	private long id;
-	private Long categoryId;
+	private Long categoryId; // updated it while updating product entity
 	private String title;
 	private String category;
 	private String brand;

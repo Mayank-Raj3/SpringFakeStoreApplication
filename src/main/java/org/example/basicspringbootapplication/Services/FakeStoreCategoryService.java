@@ -1,6 +1,7 @@
 package org.example.basicspringbootapplication.Services;
 
 import org.example.basicspringbootapplication.DTO.CategoryDTO;
+import org.example.basicspringbootapplication.Entity.Category;
 import org.example.basicspringbootapplication.gateways.ICategoryGateway;
 import org.springframework.stereotype.Service;
 
@@ -17,5 +18,16 @@ public class FakeStoreCategoryService implements ICategoryService {
     @Override
     public List<CategoryDTO> getAllCategory() throws IOException {
         return this.categoryGateway.getAllCategories();
+    }
+
+    @Override
+    public CategoryDTO createCategory(CategoryDTO categoryDTO) {
+        System.out.println("HIT2");
+        return null;
+    }
+
+    @Override
+    public CategoryDTO getCategoryById(long id) {
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package org.example.basicspringbootapplication.Mapper;
 
 import org.example.basicspringbootapplication.DTO.ProductDTO;
+import org.example.basicspringbootapplication.Entity.Category;
 import org.example.basicspringbootapplication.Entity.Product;
 
 public class ProductMapper {
@@ -18,7 +19,7 @@ public class ProductMapper {
                 .categoryId(product.getCategory().getId())
                 .build();
     }
-    public static Product toEntity(ProductDTO dto) {
+    public static Product toEntity(ProductDTO dto , Category category) {
         return Product.builder()
                 .brand(dto.getBrand())
                 .price(dto.getPrice())
@@ -28,6 +29,7 @@ public class ProductMapper {
                 .model(dto.getModel())
                 .title(dto.getTitle())
                 .discount(dto.getDiscount())
+                .category(category)
                 .build();
     }
 

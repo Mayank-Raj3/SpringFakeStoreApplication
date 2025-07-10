@@ -3,6 +3,7 @@ package org.example.basicspringbootapplication.DTO;
 import lombok.*;
 
 
+@Data
 @Getter
 @Setter
 @AllArgsConstructor

@@ -20,7 +20,7 @@ public class FakeStoreProductService implements IProductService{
     }
 
     @Override
-    public ProductDTO createProduct(ProductDTO productDTO) {
+    public ProductDTO createProduct(ProductDTO productDTO) throws Exception{
         return null;
     }
 }
