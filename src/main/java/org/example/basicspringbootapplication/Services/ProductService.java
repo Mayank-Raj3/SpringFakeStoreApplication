@@ -4,8 +4,6 @@ import org.example.basicspringbootapplication.DTO.ProductDTO;
 import org.example.basicspringbootapplication.Entity.Product;
 import org.example.basicspringbootapplication.Mapper.ProductMapper;
 import org.example.basicspringbootapplication.Repository.ProductRepository;
-import org.springframework.context.annotation.Primary;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;

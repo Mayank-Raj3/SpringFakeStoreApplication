@@ -7,7 +7,6 @@ public class ProductMapper {
     public static ProductDTO toDTO(Product product) {
         return ProductDTO.builder()
                 .id(product.getId())
-                .category(product.getCategory())
                 .brand(product.getBrand())
                 .price(product.getPrice())
                 .color(product.getColor())
@@ -16,11 +15,11 @@ public class ProductMapper {
                 .model(product.getModel())
                 .title(product.getTitle())
                 .discount(product.getDiscount())
+                .categoryId(product.getCategory().getId())
                 .build();
     }
     public static Product toEntity(ProductDTO dto) {
         return Product.builder()
-                .category(dto.getCategory())
                 .brand(dto.getBrand())
                 .price(dto.getPrice())
                 .color(dto.getColor())

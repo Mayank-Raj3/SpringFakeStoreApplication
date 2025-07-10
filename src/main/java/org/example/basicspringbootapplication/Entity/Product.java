@@ -1,5 +1,7 @@
 package org.example.basicspringbootapplication.Entity;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 
@@ -17,7 +19,11 @@ public class Product extends BaseEntity{
     private int discount;
     private String model;
     private String title;
-    private String category;
     private String brand;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id" , nullable = false)
+    private Category category ;
+
 
 }
