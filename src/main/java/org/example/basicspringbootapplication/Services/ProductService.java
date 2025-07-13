@@ -3,9 +3,11 @@ package org.example.basicspringbootapplication.Services;
 import org.example.basicspringbootapplication.DTO.ProductDTO;
 import org.example.basicspringbootapplication.Entity.Category;
 import org.example.basicspringbootapplication.Entity.Product;
+import org.example.basicspringbootapplication.Exceptions.ProductNotFoundException;
 import org.example.basicspringbootapplication.Mapper.ProductMapper;
 import org.example.basicspringbootapplication.Repository.CategoryRepository;
 import org.example.basicspringbootapplication.Repository.ProductRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -23,7 +25,7 @@ public class ProductService implements IProductService {
     public ProductDTO getProductById(Long id) throws IOException {
         return productRepository.findById(id)
                 .map(ProductMapper::toDTO)
-                .orElseThrow(() -> new IOException("Product not found with id: " + id));
+                .orElseThrow(() -> new ProductNotFoundException("Product not found with id: " + id));
     }
 
     @Override

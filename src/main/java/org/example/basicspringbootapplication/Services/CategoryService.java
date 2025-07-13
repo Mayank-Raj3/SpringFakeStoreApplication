@@ -1,9 +1,11 @@
 package org.example.basicspringbootapplication.Services;
 
+import org.example.basicspringbootapplication.DTO.AllProductsOfCategoryDTO;
 import org.example.basicspringbootapplication.DTO.CategoryDTO;
 import org.example.basicspringbootapplication.DTO.ProductDTO;
 import org.example.basicspringbootapplication.Entity.Category;
 import org.example.basicspringbootapplication.Mapper.CategoryMapper;
+import org.example.basicspringbootapplication.Mapper.ProductMapper;
 import org.example.basicspringbootapplication.Repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -44,20 +46,21 @@ public class CategoryService implements ICategoryService {
         return CategoryMapper.toDTO(saved);
     }
 
-//    public AllProductsOfCategoryDTO getAllProductsOfCategory(Long categoryId) throws Exception {
-//        Category category = repo.findById(categoryId)
-//                .orElseThrow(() -> new Exception("Category not found with id: " + categoryId));
-//
-//        List<ProductDTO> productDTOs = category.getProducts()
-//                .stream()
-//                .map(product -> ProductMapper.toDto(product))
-//                .collect(Collectors.toList());
-//
-//        return AllProductsOfCategoryDTO.builder()
-//                .categoryId(category.getId())
-//                .name(category.getName())
-//                .products(productDTOs)
-//                .build();
-//    }
+    public AllProductsOfCategoryDTO getAllProductsOfCategory(Long categoryId) throws Exception {
+        Category category = this.categoryRepository.findById(categoryId)
+                .orElseThrow(() -> new Exception("Category not found with id: " + categoryId));
+
+
+        List<ProductDTO> productDTOs = category.getProducts()
+                .stream()
+                .map(ProductMapper::toDTO)
+                .collect(Collectors.toList());
+
+        return AllProductsOfCategoryDTO.builder()
+                .categoryId(category.getId())
+                .name(category.getName())
+                .products(productDTOs)
+                .build();
+    }
 
 }
