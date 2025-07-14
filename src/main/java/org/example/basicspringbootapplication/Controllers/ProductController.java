@@ -24,15 +24,15 @@ public class ProductController {
     }
     @GetMapping("/{id}")
     public ResponseEntity<?> getProductById(@PathVariable long id) throws IOException {
-//        ProductDTO response = service.getProductById(id) ;
-//        ResponseEntity.ok(response);
+        ProductDTO response = service.getProductById(id) ;
+        return ResponseEntity.ok(response);
 
-        try{
-            ProductDTO response = service.getProductById(id) ;
-            return ResponseEntity.ok(response) ;
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product Not found") ;
-        }
+//        try{
+//            ProductDTO response = service.getProductById(id) ;
+//            return ResponseEntity.ok(response) ;
+//        }catch (Exception e){
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Product Not found") ;
+//        }
 
     }
 
@@ -41,8 +41,4 @@ public class ProductController {
         return ResponseEntity.ok(this.service.createProduct(product));
     }
 
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<?> handleException(Exception ex){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage()) ;
-    }
 }

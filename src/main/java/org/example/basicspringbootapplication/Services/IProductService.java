@@ -6,6 +6,6 @@ import org.springframework.http.ResponseEntity;
 import java.io.IOException;
 
 public interface IProductService {
-    public ProductDTO getProductById(Long id) throws IOException;
+    public ProductDTO getProductById(Long id) ;
     public ProductDTO createProduct(ProductDTO productDTO) throws Exception ;
 }

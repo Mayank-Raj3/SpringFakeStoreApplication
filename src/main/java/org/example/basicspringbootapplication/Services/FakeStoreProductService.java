@@ -15,8 +15,9 @@ public class FakeStoreProductService implements IProductService{
     }
 
     @Override
-    public ProductDTO getProductById(Long id) throws IOException {
-        return productGateway.findById(id);
+    public ProductDTO getProductById(Long id)  {
+//        return productGateway.findById(id);
+    return  null;
     }
 
     @Override
